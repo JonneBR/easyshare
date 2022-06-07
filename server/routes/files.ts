@@ -43,7 +43,11 @@ export default router.post(
         secure_url,
         format,
       });
-      res.status(200).json({ message: "Successfully uploaded!", file });
+      res.status(200).json({
+        message: "Successfully uploaded!",
+        id: file._id,
+        downloadPageLink: `${process.env.API_BASE_ENDPOINT_CLIENT}/download/${file._id}`,
+      });
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: "Server Error :(" });
