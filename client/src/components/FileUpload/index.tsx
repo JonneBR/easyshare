@@ -1,5 +1,6 @@
 import { InputGroup } from "@chakra-ui/react";
 import React, { ReactNode, useRef } from "react";
+import { DropzoneInputProps } from "react-dropzone";
 import { UseFormRegisterReturn } from "react-hook-form";
 
 interface FileUploadProps {
@@ -15,9 +16,9 @@ export const FileUpload = (props: FileUploadProps) => {
   const { ref, ...rest } = register as {
     ref: (instance: HTMLInputElement | null) => void;
   };
-  console.log("register", register);
-  console.log("ref", ref);
-  console.log("rest", rest);
+  // console.log("register", register);
+  // console.log("ref", ref);
+  // console.log("rest", rest);
 
   const handleClick = () => inputRef.current?.click();
 

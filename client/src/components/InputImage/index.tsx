@@ -11,6 +11,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
+import { useDropzone } from "react-dropzone";
 import { useForm } from "react-hook-form";
 import { FileUpload } from "../FileUpload";
 
@@ -19,6 +20,14 @@ type FormValues = {
 };
 
 export const InputImage = () => {
+  const { getRootProps, acceptedFiles } = useDropzone({
+    noClick: true,
+    onDrop: (files) => validateFiles(files),
+  });
+  const files = acceptedFiles.map((file) => (
+    <li key={file.name}>{file.name}</li>
+  ));
+
   const {
     register,
     handleSubmit,
@@ -26,8 +35,8 @@ export const InputImage = () => {
   } = useForm<FormValues>();
   const onSubmit = handleSubmit((data) => console.log("On Submit: ", data));
 
-  const validateFiles = (value: FileList) => {
-    console.log("VALUE", value);
+  const validateFiles = (value: FileList | File[]) => {
+    console.log("VALUE", value.length);
 
     if (value.length < 1) {
       return "Files is required";
@@ -55,23 +64,44 @@ export const InputImage = () => {
       <VStack spacing="14px">
         <Heading as="h1">File Upload</Heading>
         <Flex
+          _hover={{
+            boxShadow: "inset 0 0 10em 1em rgba(255, 255, 255, 0.3)",
+          }}
+          transition="box-shadow 400ms linear"
+          boxShadow="inset 0 0 100px 100px rgba(255, 255, 255, 0.1)"
           border="1px dashed gray"
           height="200px"
           width="400px"
           align="center"
           justify="center"
           flexDir="column"
+          {...getRootProps()}
         >
           <VStack spacing="14px">
             <Image width="70px" src="./images/file-svgrepo.svg" />
             <Text>Share files like fake news!</Text>
           </VStack>
         </Flex>
-        <Button colorScheme="green" variant="outline">
-          Upload a file
-        </Button>
+        <ul>{files}</ul>
+        <form onSubmit={onSubmit}>
+          <FormControl isInvalid={!!errors.file_} isRequired>
+            <FileUpload
+              accept={"image/*"}
+              multiple
+              register={register("file_", { validate: validateFiles })}
+            >
+              <Button colorScheme="green" variant="outline">
+                Upload a file
+              </Button>
+            </FileUpload>
+            <FormErrorMessage>
+              {errors.file_ && errors?.file_.message}
+            </FormErrorMessage>
+            <button>Submit</button>
+          </FormControl>
+        </form>
       </VStack>
-      {/* <Box border="1px solid green">
+      {/* <Box>
         <form onSubmit={onSubmit}>
           <FormControl isInvalid={!!errors.file_} isRequired>
             <FormLabel>{"File input"}</FormLabel>
