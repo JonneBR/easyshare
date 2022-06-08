@@ -733,6 +733,11 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
+"@fontsource/quicksand@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/quicksand/-/quicksand-4.5.9.tgz#48f3a2bf5a46690c67549f6023581538156264d3"
+  integrity sha512-8n4gRTtdG3Ge4HLYKdNPklnXfNCo080uno3/HsQo7yVXIOHkTM1WSQopKl4gfI8o8IpUeNv0ak5OuaVHqAhlrw==
+
 "@next/env@12.1.6":
   version "12.1.6"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.1.6.tgz#5f44823a78335355f00f1687cfc4f1dafa3eca08"

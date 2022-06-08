@@ -5,6 +5,10 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Heading,
+  Image,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -41,8 +45,33 @@ export const InputImage = () => {
   };
 
   return (
-    <Flex height="100vh" align="center" justify="center" width="100%">
-      <Box border="1px solid green">
+    <Flex
+      height="100vh"
+      align="center"
+      justify="center"
+      flexDir="column"
+      width="100%"
+    >
+      <VStack spacing="14px">
+        <Heading as="h1">File Upload</Heading>
+        <Flex
+          border="1px dashed gray"
+          height="200px"
+          width="400px"
+          align="center"
+          justify="center"
+          flexDir="column"
+        >
+          <VStack spacing="14px">
+            <Image width="70px" src="./images/file-svgrepo.svg" />
+            <Text>Share files like fake news!</Text>
+          </VStack>
+        </Flex>
+        <Button colorScheme="green" variant="outline">
+          Upload a file
+        </Button>
+      </VStack>
+      {/* <Box border="1px solid green">
         <form onSubmit={onSubmit}>
           <FormControl isInvalid={!!errors.file_} isRequired>
             <FormLabel>{"File input"}</FormLabel>
@@ -52,7 +81,7 @@ export const InputImage = () => {
               multiple
               register={register("file_", { validate: validateFiles })}
             >
-              {/* leftIcon={<Icon as={FiFile} />} */}
+              leftIcon={<Icon as={FiFile} />}
               <Button>Upload</Button>
             </FileUpload>
 
@@ -63,7 +92,7 @@ export const InputImage = () => {
 
           <button>Submit</button>
         </form>
-      </Box>
+      </Box> */}
     </Flex>
   );
 };
