@@ -16,9 +16,6 @@ export const FileUpload = (props: FileUploadProps) => {
   const { ref, ...rest } = register as {
     ref: (instance: HTMLInputElement | null) => void;
   };
-  // console.log("register", register);
-  // console.log("ref", ref);
-  // console.log("rest", rest);
 
   const handleClick = () => inputRef.current?.click();
 
@@ -30,10 +27,11 @@ export const FileUpload = (props: FileUploadProps) => {
         hidden
         accept={accept}
         {...rest}
-        ref={(e) => {
-          ref(e);
-          inputRef.current = e;
-        }}
+        ref={(e) => console.log("inputRef", inputRef.current)}
+        // ref={(e) => {
+        //   ref(e);
+        //   inputRef.current = e;
+        // }}
       />
       <>{children}</>
     </InputGroup>
