@@ -1,8 +1,12 @@
+import { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
+import axios from "axios";
 
 import theme from "../theme";
+
 import "@fontsource/quicksand";
-import { AppProps } from "next/app";
+
+axios.defaults.baseURL = "http://localhost:3333/";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
