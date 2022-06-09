@@ -1,32 +1,10 @@
-import {
-  Box,
-  Button,
-  Flex,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Heading,
-  Image,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import React, { FC, useMemo, useState } from "react";
-import { useDropzone } from "react-dropzone";
-import { useForm } from "react-hook-form";
+import React, { FC, useState } from "react";
+import { Button, Flex, Heading, Text, VStack } from "@chakra-ui/react";
 import { FileUpload } from "../FileUpload";
-
-// type FormValues = {
-//   file_: FileList;
-// };
+import { RenderFile } from "../RenderFile";
 
 export const Easyshare: FC = () => {
   const [file, setFile] = useState<File>();
-
-  const files = Object.keys(file || {}).length ? (
-    <li key={file?.name}>{file?.name}</li>
-  ) : (
-    <li key="1">No file uploaded yet</li>
-  );
 
   return (
     <Flex
@@ -40,7 +18,17 @@ export const Easyshare: FC = () => {
         <Heading as="h1">Easyshare</Heading>
         <Text>1 file is the maximum</Text>
         <FileUpload setFile={setFile} />
-        <ul>{files}</ul>
+        {file ? (
+          <RenderFile
+            file={{
+              name: file.name,
+              sizeInBytes: file.size,
+              format: file.type.split("/")[1],
+            }}
+          />
+        ) : (
+          <Text>No file uploaded yet</Text>
+        )}
         <Button
           colorScheme="green"
           variant="outline"
