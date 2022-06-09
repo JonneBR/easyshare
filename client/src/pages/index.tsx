@@ -14,12 +14,12 @@ import { Main } from "../components/Main";
 import { DarkModeSwitch } from "../components/DarkModeSwitch";
 import { CTA } from "../components/CTA";
 import { Footer } from "../components/Footer";
-import { InputImage } from "../components/InputImage";
+import { Easyshare } from "../components/Easyshare";
 
 const Index = () => (
   <Container height="100vh">
     <DarkModeSwitch />
-    <InputImage />
+    <Easyshare />
     {/* <Hero />
     <Main>
       <Text color="text">
